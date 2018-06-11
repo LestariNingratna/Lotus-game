@@ -1,0 +1,35 @@
+Lotus in The Underworld
+
+MainCharacter
+LotusMansion
+ThePark
+FireworkFest
+DarkMansionGood
+TheBurnedHouse
+Finishing
+
+Module Ending:
+BadEnd
+NormalEnd1
+NormalEnd2
+GoodEnd
+Exit
+
+class hierarchy:
+*Map
+	- next_scene
+	- opening_scene
+*Engine
+	- play
+*Scene
+	- enter
+	*Death
+	*LotusMansion
+	*Laser Weapon Armory
+	*The Bridge
+	*Escape Pod
+
+combat system=
+	*Win
+	*Final
+	*Combat

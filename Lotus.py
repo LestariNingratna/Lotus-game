@@ -29,7 +29,7 @@ class Prolouge(Scene):
 		print "You just woke up in a big and luxurious bedroom. You can't remember anything."
 		print "You try to recall, and it's getting weird because you don't even remember your name."
 		print "From large windows across the room in front of you, the bright morning light striking into the room."
-		print "You see a wooden table near windows."
+		print "You see a wooden table near the windows."
 		print "There's a letter on the table. Type \"read\" to read the letter."
 		
 		action = raw_input("> ")
@@ -40,9 +40,9 @@ class Prolouge(Scene):
 			print "+==================================================================================================================+"
 			print "| This place is a dangerous place that can mislead anyone in it. If you are stranded here, you need to escape.     |"
 			print "| To be able to escape from the underworld, you need to finish your mission.                                       |"
-			print "| To be able to finish your mission, you need to know what your mission is.                                        |"
+			print "| And to be able to do it, you need to know what your mission is.                                                  |"
 			print "| Unfortunately, we don't have the answer here. You need to regain your memory to find out what your mission is.   |"
-			print "| But don't worry, you will get a beautiful lotus in your hand to guide you to find the answer.                    |"
+			print "| But don't worry, you will get a beautiful lotus in your hand to guide you and find the answer.                   |"
 			print "|                                                                                                                  |"
 			print "|\t \t \t \t \t \t    *****                                                          |"
 			print "+==================================================================================================================+"
@@ -62,14 +62,20 @@ class LotusMansion(Scene):
 		print "Someone's knocking the front door. You step out of the bedroom, walking through the hallway to reach the front door."
 		print "The house is so big and spacious it's more similar to mansion than a normal house."
 		print "You open the door and you see a little boy with his white pyrenean mountain dog."
-		print "\"Sir, my dog is smelling the smell of lotus flower in your house. My dog told me that you can help me find my home."
-		print "I have been walking for 3 days with my dog, and I can not find my way to my home. Would you mind to help me? Please...\", said the little boy"
+		print "\"Sir, my dog has been following the smell of lotus flower in your house. My dog told me that you can help me find my home."
+		print "I have been walking for 3 days with my dog, and I couldn't find my way to home. Would you mind to help me? Please...\", said the little boy"
 		print "You see the lotus in your hand is shining so bright, and suddenly one of its petals fall off."
 		print "This little boy could be a clue for you to escape the underworld. Do you want to help him? (y/n)"
 		
 		action = raw_input("> ")
 		if action == "y":
+			print "---------------------------------------------------------"
 			print "You decided to help him. Try to ask something to him!"
+			print "1. \"What\'s your name?\""
+			print "2. \"Where do you live?\""
+			print "3. \"Your dog can talk?\""
+			print "4. \"Do you know anything about my weird flower?\""
+			print "5. \"alright. Let's find your home\""
 			return 'dialouge'
 		
 		elif action == "n":
@@ -86,9 +92,15 @@ class LotusMansion(Scene):
 
 class Dialouge(Scene):
 	def enter(self,MainCharacter):
-		print "1. \"What\'s your name?\""
-		print ""
-		print ""
+		action = raw_input("> ")
+		if action == "1":
+			print "\"my name is Liam... Liam Dayton. and my dog's name is Snowy\", said the kid."
+			print "\"May I know your name, sir?\""
+			print "You don't know what to say, because you don't even remember yours"
+			print "\"Uh.... I don't remember my name\""
+			print "\"That's weird. Okay.... can I call you Mr. Lotus?\", asked the kid"
+			print "\"It sounds funny. Well, it's okay... you can call me Mr. Lotus. Nice to meet you Liam!\""
+			return 'dialouge'
 class Map(object):
 
 	scenes = {'prolouge' : Prolouge(),

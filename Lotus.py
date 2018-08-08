@@ -13,12 +13,16 @@ class Engine(object):
 		self.MainCharacter = MainCharacter
 		
 	def play(self):
-		current_scene = self.scene_map.opening_scene()
-		
-		while True:
-			print "\n--------"
-			next_scene_name = current_scene.enter(self.MainCharacter)
-			current_scene = self.scene_map.next_scene(next_scene_name)
+                 
+            current_scene = self.scene_map.opening_scene()
+
+            while True:
+                
+                print "\n--------"
+                
+                next_scene_name = current_scene.enter(self.MainCharacter)
+                
+                current_scene = self.scene_map.next_scene(next_scene_name)
 			
 class Prolouge(Scene):
 	def enter(self,MainCharacter):
@@ -37,7 +41,7 @@ class Prolouge(Scene):
 	             There's a letter on the table. Type \"read\" to read the letter.
                      """
 		
-		action = raw_input("> ").lower()
+		action = raw_input("> ").lower().strip()
 		if action == "read":
 			print """
                                   +==================================================================================================================+"
@@ -81,9 +85,9 @@ class LotusMansion(Scene):
 		                This little boy could be a clue for you to escape the underworld. Do you want to help him? (y/n)
                     """
 		
-                action = raw_input("> ").lower()
-                
-		if action == "y":
+                action = raw_input("> ").lower().strip()
+        
+		if action == "y" or action == "yes":
 			print """
                                 ---------------------------------------------------------
 			        You decided to help him. Try to ask something to him!"
@@ -95,7 +99,7 @@ class LotusMansion(Scene):
                          """
 			return 'dialouge'
 		
-		elif action == "n":
+		elif action == "n" or action =="no":
 			print """
                                 Like a world class boxer you dodge, weave, slip and slide right"
 			        as the Gothon's blaster cranks a laser past your head."
@@ -110,7 +114,7 @@ class LotusMansion(Scene):
 
 class Dialouge(Scene):
 	def enter(self,MainCharacter):
-		action = raw_input("> ").lower() 
+		action = raw_input("> ").lower().strip()
 
 		if action == "1":
 			print """
@@ -148,15 +152,21 @@ class Dialouge(Scene):
 			      \"He said you smell like a good person and he trust you\"
                                 """
 			return 'dialouge'
+
+                elif action == "exit" :
+
+                    exit(1)
 		
 		else:
 			print "DOES NOT COMPUTE!"
 			return 'dialouge'
 class Map(object):
 
-	scenes = {'prolouge' : Prolouge(),
-		'lotus_mansion' : LotusMansion(),
-		'dialouge' : Dialouge()}
+	scenes = {
+                  'prolouge'      : Prolouge(),
+		  'lotus_mansion' : LotusMansion(),
+		  'dialouge'      : Dialouge() 
+                  }
 	
 	def __init__(self,start_scene):
 		self.start_scene = start_scene
@@ -167,13 +177,45 @@ class Map(object):
 	def opening_scene(self):
 		return self.next_scene(self.start_scene)
 				
+        
 class MainCharacter():
 	''' class for hero '''
-	
 	hp = 1000
 	power = 200
 	rate = 5
+        
+        """
+        def __init__ (self) :
+            
+            self._hp = 1000
+            self.power = 200
+            self.rate  = 5 
+        
+        @property 
+        def hp (self) : 
 
-a_map = Map('prolouge')
-a_game = Engine(a_map,MainCharacter)
-a_game.play()
+            print self._hp:
+
+        @hp.setter 
+        def hp (sefl , health_value) : 
+    
+            self_hp = health_value  
+	"""
+
+
+###########################
+# main execution function #
+###########################
+
+def main () : 
+
+    a_map = Map('prolouge')
+    a_game = Engine(a_map,MainCharacter)
+    a_game.play()
+
+
+if __name__=="__main__" :
+    
+    main() 
+
+
